@@ -1,3 +1,4 @@
+import 'package:e301_moviles/config/router/app_router.dart';
 import 'package:e301_moviles/config/theme/app_theme.dart';
 import 'package:e301_moviles/presentation/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectColor: 0).getTheme(),
-      home: HomeScreen()
     );
   }
 }

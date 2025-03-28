@@ -1,5 +1,6 @@
 import 'package:e301_moviles/config/menu/menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,9 +31,7 @@ class _HomeView extends StatelessWidget {
 }
 
 class _CustomListTile extends StatelessWidget {
-  const _CustomListTile({
-    required this.menuItem,
-  });
+  const _CustomListTile({required this.menuItem});
 
   final MenuItem menuItem;
 
@@ -43,10 +42,10 @@ class _CustomListTile extends StatelessWidget {
     return ListTile(
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subtitle),
-      leading: Icon(menuItem.icon,color: colors.primary),
+      leading: Icon(menuItem.icon, color: colors.primary),
       trailing: Icon(Icons.arrow_forward_ios_rounded),
       onTap: () {
-        //TODO: navegar a otras pantallas
+        context.push(menuItem.link);
       },
     );
   }
