@@ -55,7 +55,28 @@ class _ButtonsView extends StatelessWidget {
               onPressed: (){},
               label: Text('Filled Button Icon'),
               icon: Icon(Icons.system_security_update_rounded),
+            ),
+            OutlinedButton(
+              onPressed: (){},
+              child: Text('Outlined Button'),
+            ),
+            OutlinedButton.icon(
+              onPressed: (){},
+              label: Text('Outlined Icon Button'),
+              icon: Icon(Icons.texture)
+            ),
+            TextButton(onPressed: (){},
+              child: Text('Text Button')
+            ),
+            IconButton(onPressed: (){},
+              icon: Icon(Icons.rule_folder)
+            ),
+            IconButton(onPressed: (){},
+              icon: Icon(Icons.api),
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll()
               ),
+            ),
           ],
         ),
       ),
