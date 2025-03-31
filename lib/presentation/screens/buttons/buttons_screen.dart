@@ -26,58 +26,77 @@ class _ButtonsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Wrap(
           spacing: 20,
           alignment: WrapAlignment.center,
           children: [
+            ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
             ElevatedButton(
-              onPressed: (){}, 
-              child: Text('Elevated Button')
-            ),
-            ElevatedButton(
-              onPressed: null, 
-              child: Text('Disable Elevated Button')
+              onPressed: null,
+              child: Text('Disable Elevated Button'),
             ),
             ElevatedButton.icon(
-              onPressed: (){}, 
+              onPressed: () {},
               label: Text('Elevated Button Icon'),
-              icon: Icon(Icons.alarm)
+              icon: Icon(Icons.alarm),
             ),
-            FilledButton(
-              onPressed: (){},
-              child: Text('Filled Button'),
-            ),
+            FilledButton(onPressed: () {}, child: Text('Filled Button')),
             FilledButton.icon(
-              onPressed: (){},
+              onPressed: () {},
               label: Text('Filled Button Icon'),
               icon: Icon(Icons.system_security_update_rounded),
             ),
-            OutlinedButton(
-              onPressed: (){},
-              child: Text('Outlined Button'),
-            ),
+            OutlinedButton(onPressed: () {}, child: Text('Outlined Button')),
             OutlinedButton.icon(
-              onPressed: (){},
+              onPressed: () {},
               label: Text('Outlined Icon Button'),
-              icon: Icon(Icons.texture)
+              icon: Icon(Icons.texture),
             ),
-            TextButton(onPressed: (){},
-              child: Text('Text Button')
-            ),
-            IconButton(onPressed: (){},
-              icon: Icon(Icons.rule_folder)
-            ),
-            IconButton(onPressed: (){},
+            TextButton(onPressed: () {}, child: Text('Text Button')),
+            IconButton(onPressed: () {}, icon: Icon(Icons.rule_folder)),
+            IconButton(
+              onPressed: () {},
               icon: Icon(Icons.api),
               style: ButtonStyle(
-                backgroundColor: WidgetStatePropertyAll()
+                backgroundColor: WidgetStatePropertyAll(colors.primary),
+                iconColor: WidgetStatePropertyAll(Colors.yellow),
+                iconSize: WidgetStatePropertyAll(25),
+                ),
+            ),
+            CustomButton()
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Material(
+        color: Colors.deepOrange,
+        child: InkWell(
+          onTap: (){},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text('Flutter/Dart',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ],
+          ),
         ),
       ),
     );
