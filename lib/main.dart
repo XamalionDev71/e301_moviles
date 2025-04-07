@@ -1,6 +1,6 @@
 import 'package:e301_moviles/config/router/app_router.dart';
 import 'package:e301_moviles/config/theme/app_theme.dart';
-import 'package:e301_moviles/presentation/screens/home/home_screen.dart';
+//import 'package:e301_moviles/presentation/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
