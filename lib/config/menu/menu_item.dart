@@ -39,6 +39,12 @@ final appMenuItems = <MenuItem>[
     link: '/snackbar',
     icon: Icons.info_outline,
   ),
+  MenuItem(
+    title: 'Animated Container',
+    subtitle: 'Stateful widget animado',
+    link: '/animated',
+    icon: Icons.check_box_outline_blank_outlined,
+  ),
 ];
 
 
