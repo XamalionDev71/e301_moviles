@@ -34,15 +34,19 @@ class AppTutorialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: PageView(
-        children: slides.map(
-            (slideData) => _Slide(
-              title: slideData.title,
-              caption: slideData.caption,
-              imageUrl: slideData.imageUrl
-            ),
-          ).toList(),
-      )
+        children:
+            slides
+                .map(
+                  (slideData) => _Slide(
+                    title: slideData.title,
+                    caption: slideData.caption,
+                    imageUrl: slideData.imageUrl,
+                  ),
+                )
+                .toList(),
+      ),
     );
   }
 }
@@ -55,10 +59,29 @@ class _Slide extends StatelessWidget {
   const _Slide({
     required this.title,
     required this.caption,
-    required this.imageUrl});
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final titleStyle = Theme.of(context).textTheme.titleLarge;
+    final captionStyle = Theme.of(context).textTheme.bodySmall;
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(imageUrl),
+            SizedBox(height: 30),
+            Text(title,style: titleStyle,),
+            SizedBox(height: 10),
+            Text(caption,style: captionStyle,),
+          ],
+        ),
+      ),
+    );
   }
 }
