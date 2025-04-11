@@ -7,6 +7,38 @@ class ControlsUiScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('UI Controls + Tiles')),
+      body: _UiControlsView(),
+    );
+  }
+}
+
+class _UiControlsView extends StatefulWidget {
+  const _UiControlsView();
+
+  @override
+  State<_UiControlsView> createState() => _UiControlsViewState();
+}
+
+class _UiControlsViewState extends State<_UiControlsView> {
+  bool isDeveloper = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        SwitchListTile(
+          title: Text('Developer Mode'),
+          subtitle: Text('Controles Adicionales'),
+          value: isDeveloper,
+          onChanged: (value) {
+            setState(() {
+              isDeveloper = !isDeveloper;
+            });
+          },
+        ),
+      ],
+    );
   }
 }
