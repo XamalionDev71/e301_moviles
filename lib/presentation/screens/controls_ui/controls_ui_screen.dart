@@ -27,6 +27,10 @@ class _UiControlsViewState extends State<_UiControlsView> {
   bool isDeveloper = true;
   Transportation selectedTransportation = Transportation.car;
 
+  bool wantsBreakfast = false;
+  bool wantsLunch = false;
+  bool wantsDinner = false;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -41,49 +45,76 @@ class _UiControlsViewState extends State<_UiControlsView> {
             });
           },
         ),
-        RadioListTile(
-          title: Text('By Car'),
-          subtitle: Text('Viajar por carro'),
-          value: Transportation.car,
-          groupValue: selectedTransportation,
-          onChanged: (value) {
-            setState(() {
-              selectedTransportation = Transportation.car;
-            });
-          },
+        ExpansionTile(
+          title: Text('Vehículos de Transporte'),
+          subtitle: Text('$selectedTransportation'),
+          children: [
+            RadioListTile(
+              title: Text('By Car'),
+              subtitle: Text('Viajar por carro'),
+              value: Transportation.car,
+              groupValue: selectedTransportation,
+              onChanged: (value) {
+                setState(() {
+                  selectedTransportation = Transportation.car;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('By Plane'),
+              subtitle: Text('Viajar por avión'),
+              value: Transportation.plane,
+              groupValue: selectedTransportation,
+              onChanged: (value) {
+                setState(() {
+                  selectedTransportation = Transportation.plane;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('By Boat'),
+              subtitle: Text('Viajar por barco'),
+              value: Transportation.boat,
+              groupValue: selectedTransportation,
+              onChanged: (value) {
+                setState(() {
+                  selectedTransportation = Transportation.boat;
+                });
+              },
+            ),
+            RadioListTile(
+              title: Text('By Submarine'),
+              subtitle: Text('Viajar por submarino'),
+              value: Transportation.submarine,
+              groupValue: selectedTransportation,
+              onChanged: (value) {
+                setState(() {
+                  selectedTransportation = Transportation.submarine;
+                });
+              },
+            ),
+          ],
         ),
-        RadioListTile(
-          title: Text('By Plane'),
-          subtitle: Text('Viajar por avión'),
-          value: Transportation.plane,
-          groupValue: selectedTransportation,
-          onChanged: (value) {
-            setState(() {
-              selectedTransportation = Transportation.plane;
-            });
-          },
+        CheckboxListTile(
+          title: Text('¿Incluir Desayuno?'),
+          value: wantsBreakfast,
+          onChanged: (value) => setState(() {
+            wantsBreakfast = !wantsBreakfast;
+          }),
         ),
-        RadioListTile(
-          title: Text('By Boat'),
-          subtitle: Text('Viajar por barco'),
-          value: Transportation.boat,
-          groupValue: selectedTransportation,
-          onChanged: (value) {
-            setState(() {
-              selectedTransportation = Transportation.boat;
-            });
-          },
+        CheckboxListTile(
+          title: Text('¿Incluir Comida?'),
+          value: wantsLunch,
+          onChanged: (value) => setState(() {
+            wantsLunch = !wantsLunch;
+          }),
         ),
-        RadioListTile(
-          title: Text('By Submarine'),
-          subtitle: Text('Viajar por submarino'),
-          value: Transportation.submarine,
-          groupValue: selectedTransportation,
-          onChanged: (value) {
-            setState(() {
-              selectedTransportation = Transportation.submarine;
-            });
-          },
+        CheckboxListTile(
+          title: Text('¿Incluir Cena?'),
+          value: wantsDinner,
+          onChanged: (value) => setState(() {
+            wantsDinner = !wantsDinner;
+          }),
         ),
       ],
     );
