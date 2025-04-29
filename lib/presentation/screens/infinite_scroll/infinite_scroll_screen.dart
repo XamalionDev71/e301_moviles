@@ -83,7 +83,7 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     imagesIds.add(lastId + 1);
     addFiveImages();
 
-    setState(() { });
+    setState(() {});
   }
 
   Future loadNextPage() async {
@@ -98,6 +98,8 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
     if (!isMounted) return;
     setState(() {});
+
+    moveScrollToBottom();
   }
 
   @override
@@ -116,5 +118,18 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     super.dispose();
     scrollController.dispose();
     isMounted = false;
+  }
+
+  void moveScrollToBottom() {
+    if (scrollController.position.pixels + 100 <=
+        scrollController.position.maxScrollExtent) {
+      return;
+    }
+
+    scrollController.animateTo(
+      scrollController.position.pixels + 120,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.fastOutSlowIn,
+    );
   }
 }
