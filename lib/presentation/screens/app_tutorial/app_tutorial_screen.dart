@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SlideInfo {
   final String title;
@@ -35,17 +36,27 @@ class AppTutorialScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: PageView(
-        children:
-            slides
-                .map(
-                  (slideData) => _Slide(
-                    title: slideData.title,
-                    caption: slideData.caption,
-                    imageUrl: slideData.imageUrl,
-                  ),
-                )
-                .toList(),
+      body: Stack(
+        children: [
+          PageView(
+            children:
+              slides
+                  .map(
+                    (slideData) => _Slide(
+                      title: slideData.title,
+                      caption: slideData.caption,
+                      imageUrl: slideData.imageUrl,
+                    ),
+                  )
+                  .toList(),
+          ),
+          Positioned(
+            top: 50,
+            right: 20,
+            child: TextButton(
+              onPressed: ()=>context.pop(),
+              child: Text('Salir'))),
+        ]
       ),
     );
   }
